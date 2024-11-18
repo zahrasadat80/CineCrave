@@ -2,6 +2,9 @@ import "./App.css";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { Home, Movies, Tv, People } from "./pages";
 import Navigation from "./components/Navigation";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 function Layout() {
   return (
@@ -39,7 +42,9 @@ const router = createBrowserRouter([
 export default function App() {
   return (
     <>
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
     </>
   );
 }
