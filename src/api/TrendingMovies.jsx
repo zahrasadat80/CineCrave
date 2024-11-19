@@ -1,10 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
-import fetchFromApi from "./fetch";
+import useApiData from "../hooks/useApiData";
 
 export default function TrendingMovies() {
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, isError } = useApiData({
     queryKey: ["trendingMovies"],
-    queryFn: () => fetchFromApi({ endpoint: "trending/movie/day" }),
+    endpoint: "trending/movie/day",
   });
   if (isLoading) return <div>is loading...</div>;
   if (isError) return <div>is Error ... </div>;

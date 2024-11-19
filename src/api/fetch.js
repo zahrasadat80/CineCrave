@@ -8,13 +8,19 @@ export default async function fetchFromApi({
   method = "GET",
   params = {},
 }) {
-  const response = await axios({
-    url: `${BASE_URL}/${endpoint}`,
-    method,
-    params: {
-      api_key: API_KEY,
-      ...params,
-    },
-  });
-  return response.data;
+  try {
+    const response = await axios({
+      url: `${BASE_URL}/${endpoint}`,
+      method,
+      params: {
+        api_key: API_KEY,
+        ...params,
+      },
+    });
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw new Error(error.response?.data?.status.message || "API error");
+  }
 }

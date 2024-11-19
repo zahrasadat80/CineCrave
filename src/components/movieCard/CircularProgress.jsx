@@ -12,8 +12,8 @@ const getColorFromPercentage = (percentage) => {
   }
 };
 
-export default function CircularProgressBar() {
-  const score = 60;
+export default function CircularProgressBar({ movie }) {
+  const score = (movie.vote_average * 10).toFixed(0);
   return (
     <>
       <CircularProgressbar
