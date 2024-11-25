@@ -2,25 +2,20 @@ import { useState } from "react";
 
 import "./style.css";
 
-export default function Toggle({ onToggle }) {
+export default function Toggle({ value }) {
   const [selected, setSelected] = useState("day");
-
-  const handleToggle = (value) => {
-    setSelected(value);
-    onToggle(value); // Notify parent component about the selection
-  };
 
   return (
     <div className="toggle-container">
       <button
         className={selected === "day" ? "active" : ""}
-        onClick={() => handleToggle("day")}
+        onClick={() => setSelected("day")}
       >
         Day
       </button>
       <button
         className={selected === "week" ? "active" : ""}
-        onClick={() => handleToggle("week")}
+        onClick={() => setSelected("week")}
       >
         Week
       </button>

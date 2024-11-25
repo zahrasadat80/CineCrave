@@ -4,7 +4,6 @@ import { Home, Movies, Tv, People } from "./pages";
 import Navigation from "./components/Navigation";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ErrorPage from "./pages/ErrorPage";
-import { TrendingProvider } from "./context/TrendingContext";
 
 const queryClient = new QueryClient();
 
@@ -46,9 +45,7 @@ export default function App() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <TrendingProvider>
-          <RouterProvider router={router} />
-        </TrendingProvider>
+        <RouterProvider router={router} />
       </QueryClientProvider>
     </>
   );
